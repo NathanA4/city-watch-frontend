@@ -1,13 +1,20 @@
 <template>
     <app-main-wrapper>
-        <app-card>
-            <v-card-title class="text-uppercase">{{ id }}</v-card-title>
+        <app-card v-if="!loading && cityData">
+            <v-card-title class="text-uppercase">
+                {{ cityData.officialName }}
+            </v-card-title>
+            <v-img :src="cityData.image.url" max-height="200"></v-img>
             <v-tabs v-model="tab" color="primary" grow>
-                <v-tab :to="id + '/'">Overview</v-tab>
-                <v-tab :to="id + '/input'">Input</v-tab>
-                <v-tab :to="id + '/output'">Output</v-tab>
+                <v-tab :to="`/city/${id}/`" exact>Overview</v-tab>
+                <v-tab :to="`/city/${id}/input`" exact>Input</v-tab>
+                <v-tab :to="`/city/${id}/output`" exact>Output</v-tab>
+                <v-tab :to="`/city/${id}/about`" exact>About</v-tab>
             </v-tabs>
             <router-view name="content"></router-view>
+        </app-card>
+        <app-card v-else>
+            <v-progress-circular indeterminate color="primary"></v-progress-circular>
         </app-card>
     </app-main-wrapper>
 </template>
@@ -15,6 +22,7 @@
 <script>
 import AppMainWrapper from "@/components/AppMainWrapper";
 import AppCard from "@/components/AppCard";
+import {mapGetters} from "vuex";
 
 export default {
     name: "City",
@@ -22,8 +30,15 @@ export default {
         id: String
     },
     components: {AppCard, AppMainWrapper},
+    computed: mapGetters({
+        loading: "city/loading",
+        cityData: "city/cityData"
+    }),
     data: () => ({
         tab: null
-    })
+    }),
+    mounted() {
+        this.$store.dispatch('city/getCityById', this.id);
+    }
 }
 </script>

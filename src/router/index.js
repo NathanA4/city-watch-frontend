@@ -29,6 +29,20 @@ const routes = [
         }
       },
       {
+        path: 'input',
+        props: true,
+        components: {
+          content: () => import('../views/City/CityInput.vue')
+        }
+      },
+      {
+        path: 'output',
+        props: true,
+        components: {
+          content: () => import('../views/City/CityOutput.vue')
+        }
+      },
+      {
         path: 'about',
         props: true,
         components: {

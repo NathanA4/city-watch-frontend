@@ -1,13 +1,13 @@
 <template>
     <v-app class="ma-0 pa-0">
-        <v-app-bar app color="primary" dark>
+        <v-app-bar app color="primary" dark clipped-left>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-icon large left>mdi-city</v-icon>
             <v-toolbar-title class="display-1 text-uppercase">
                 City<span class="font-weight-thin">Watch</span>
             </v-toolbar-title>
         </v-app-bar>
-        <v-navigation-drawer v-model="drawer" absolute temporary>
+        <v-navigation-drawer v-model="drawer" absolute temporary clipped>
             <v-list nav>
                 <v-list-item to="/">
                     <v-list-item-icon>
@@ -64,7 +64,7 @@ export default {
     name: 'App',
     components: {},
     data: () => ({
-        drawer: false
+        drawer: true
     }),
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
     <div v-if="cityData">
-        {{ cityData.population }}
+        Output
+        {{ cityData.name }}
     </div>
 </template>
 
@@ -9,7 +10,7 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "CityHome",
+    name: "CityOutput",
     data: () => ({}),
     computed: mapGetters({
         cityData: "city/cityData"
