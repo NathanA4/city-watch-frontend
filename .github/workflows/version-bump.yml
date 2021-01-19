@@ -1,0 +1,24 @@
+name: Version Bump
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  version-bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/checkout@v2
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: git config
+        run: |
+          git config --local user.email "city-watch-bot@city-watch.ca"
+          git config --local user.name "CW Version Bot":
+      - name: install yarn
+        run: npm i yarn
+      - name: version patch
+        run: yarn version:patch

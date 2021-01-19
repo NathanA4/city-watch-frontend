@@ -5,7 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "version:major": "yarn version --major",
+    "version:minor": "yarn version --minor",
+    "version:patch": "yarn version --patch",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
