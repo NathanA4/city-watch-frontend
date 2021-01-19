@@ -19,6 +19,6 @@ jobs:
           git config --local user.email "city-watch-bot@city-watch.ca"
           git config --local user.name "CW Version Bot":
       - name: install yarn
-        run: npm i yarn
+        run: npm i -g yarn
       - name: version patch
         run: yarn version:patch
