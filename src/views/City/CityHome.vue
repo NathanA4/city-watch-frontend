@@ -1,6 +1,8 @@
 <template>
     <div v-if="cityData">
-        {{ cityData.population }}
+        <p>{{ "Population: " + cityData.population }}</p>
+        
+        <p>{{ "Weather now: " + cityData.weather.temp + " deg C"}}</p>
     </div>
 </template>
 

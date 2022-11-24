@@ -1,10 +1,13 @@
 <template>
     <app-main-wrapper>
         <app-card v-if="!loading && cityData">
-            <v-card-title class="text-uppercase">
+            <v-card-title class="text-uppercase" v-if="cityData.officialName">
                 {{ cityData.officialName }}
             </v-card-title>
-            <v-img :src="cityData.image.url" max-height="200"></v-img>
+            <v-card-title class="text-uppercase" v-else>
+                {{ cityData.name }}
+            </v-card-title>
+            <v-img :src="cityData.image.url" max-height="200" v-if="cityData.image"></v-img>
             <v-tabs v-model="tab" color="primary" grow>
                 <v-tab :to="`/city/${id}/`" exact>Overview</v-tab>
                 <v-tab :to="`/city/${id}/input`" exact>Input</v-tab>
